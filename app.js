@@ -4,21 +4,23 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
-// selected image 
+
+
 let sliders = [];
 
 
-// If this key doesn't work
-// Find the name in the url and go to their website
-// to create your own api key
+
 const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
-// show images 
+
+
 const showImages = (images) => {
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
   toggleSpinner();
-  // show gallery title
+
+  
+
   galleryHeader.style.display = 'flex';
   images.forEach(image => {
     let div = document.createElement('div');
@@ -52,12 +54,14 @@ const selectItem = (event, img) => {
 };
 var timer;
 const createSlider = () => {
-  // check slider image length
+  
+
   if (sliders.length < 2) {
     alert('Select at least 2 image.')
     return;
   }
-  // crate slider previous next area
+  
+
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
   prevNext.className = "prev-next d-flex w-100 justify-content-between align-items-center";
@@ -68,7 +72,7 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
-  // hide image aria
+  
   imagesArea.style.display = 'none';
 
   const durations = document.getElementById('duration').value || 1000
@@ -88,12 +92,14 @@ const createSlider = () => {
 
 }
 
-// change slider index 
+
+
 const changeItem = index => {
   changeSlide(slideIndex += index);
 }
 
-// change slide item
+
+
 const changeSlide = (index) => {
   const items = document.querySelectorAll('.slider-item');
   if (index < 0) {
@@ -112,14 +118,15 @@ const changeSlide = (index) => {
 
   items[index].style.display = "block"
 }
-// enter btn evenHandler
+
+
 document.getElementById('search').addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     document.getElementById('search-btn').click()
   }
 })
 
-// search button EvenHandler
+
 searchBtn.addEventListener('click', function () {
   const search = document.getElementById('search');
   const emptyDiv = document.getElementById('emptyWarning');
@@ -134,7 +141,7 @@ searchBtn.addEventListener('click', function () {
     toggleSpinner();
   }
 })
-// slider button EvenHandler
+
 sliderBtn.addEventListener('click', function () {
   const durations = document.getElementById('duration').value || 1000
   if (durations < 0) {
@@ -143,14 +150,17 @@ sliderBtn.addEventListener('click', function () {
     createSlider()
   }
 })
-// toggleSpinner
+
+
+
 const toggleSpinner = () => {
   const spinner = document.getElementById('loading-spinner').classList;
   const imageSection = document.querySelector('.images').classList;
   spinner.toggle('d-none');
   imageSection.toggle('d-none');
 };
-// warning
+
+
 const displayWarning = (error) => {
   const errorDiv = document.getElementById('warning');
   errorDiv.innerText = error
